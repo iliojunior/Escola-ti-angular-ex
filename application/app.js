@@ -1,3 +1,7 @@
-/**
- * Created by iliojunior on 3/16/17.
- */
+(function () {
+
+    'use strict';
+
+    var app = angular.module('app', []);
+
+})();
