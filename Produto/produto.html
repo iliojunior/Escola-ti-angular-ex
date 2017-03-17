@@ -1,40 +1,37 @@
 <div class="row">
     <form class="col s12" name="form-produto" ng-submit="ProdutosCtrl.save(ProdutosCtrl.produtoEditavel)">
-        <div class="row">
-            <div class="input-field col s3">
-                <input id="codigo" placeholder="Código" name="codigo" type="number"
-                       ng-model="ProdutosCtrl.produtoEditavel.codigo" class="validate" required>
-            </div>
-            <div class="input-field col s9">
-                <input id="nome" placeholder="Nome" name="nome" type="text" ng-model="ProdutosCtrl.produtoEditavel.nome"
-                       class="validate" required>
-            </div>
-        </div>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ProdutosCtrl.titleProduto}}</span>
+                <div class="row">
+                    <div class="input-field col s3 l2">
+                        <input id="codigo" placeholder="Código" name="codigo" type="number"
+                               ng-model="ProdutosCtrl.produtoEditavel.codigo" class="validate" required>
+                    </div>
+                    <div class="input-field col s9 l6">
+                        <input id="nome" placeholder="Nome" name="nome" type="text"
+                               ng-model="ProdutosCtrl.produtoEditavel.nome"
+                               class="validate" required>
+                    </div>
 
-        <div class="row">
-            <div class="input-field col s6">
-                <input type="number" placeholder="Preço" name="preco" id="preco"
-                       ng-model="ProdutosCtrl.produtoEditavel.preco" class="validate" required>
+                    <div class="input-field col s6 l2">
+                        <input type="number" placeholder="Preço" name="preco" id="preco" step="any"
+                               ng-model="ProdutosCtrl.produtoEditavel.preco" class="validate" required>
+                    </div>
+                    <div class="input-field col s6 l2">
+                        <input placeholder="Estoque" type="number" name="estoque" id="estoque" step="any"
+                               ng-model="ProdutosCtrl.produtoEditavel.estoque" class="validate" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light pull right teal darken-1" type="submit" name="action">
+                        Adicionar
+                    </button>
+                </div>
             </div>
-            <div class="input-field col s6">
-                <input placeholder="Estoque" type="number" name="estoque" id="estoque"
-                       ng-model="ProdutosCtrl.produtoEditavel.estoque" class="validate" required>
-            </div>
-        </div>
-
-        <div class="row">
-            <button class="btn waves-effect waves-light pull right teal darken-1" type="submit" name="action">Salvar
-            </button>
         </div>
     </form>
 </div>
-
-<!--<div class="row" ng-show="form-produto.$valid">
-    <h3>{{ProdutosCtrl.produtoEditavel.codigo}} - {{ProdutosCtrl.produtoEditavel.nome}}</h3>
-    Estoque: {{ProdutosCtrl.produtoEditavel.estoque}}
-    <em class="pull right">{{ProdutosCtrl.produtoEditavel.preco | currency}}</em>
-</div>-->
-
 
 <div class="row">
     <div class="col s6 m4" ng-repeat="produto in ProdutosCtrl.products | orderBy:'-codigo'">
@@ -42,7 +39,7 @@
             <div class="card-content">
                 Código: {{produto.codigo}}
                 <span class="card-title">{{produto.nome}}</span>
-                <p>{{produto.preco | currency}} <span class="pull right">Estoque {{produto.estoque}}</span></p>
+                <p>{{produto.preco | currency}} <span class="pull right">{{produto.estoque}} em estoque</span></p>
             </div>
             <div class="card-action">
                 <a href="#" ng-click="ProdutosCtrl.edit(produto)" class="teal-text">Edit</a>

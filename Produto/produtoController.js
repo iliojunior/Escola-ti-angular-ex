@@ -28,6 +28,8 @@
         this.products = produtos;
         this.produtoEditavel = {};
 
+        this.titleProduto = "Novo Produto";
+
         this.save = function () {
             this.products.push(this.produtoEditavel);
             this.produtoEditavel = {};
