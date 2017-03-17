@@ -10,15 +10,15 @@
     var produtosTeste = [
         {
             codigo: 1,
-            nome: '1',
-            preco: 1,
-            estoque: 1
+            nome: 'Paçoca',
+            preco: 0.50,
+            estoque: 10
         },
         {
             codigo: 2,
-            nome: '2',
-            preco: 2,
-            estoque: 2
+            nome: 'Tomate',
+            preco: 2.50,
+            estoque: 25
         },
     ];
 

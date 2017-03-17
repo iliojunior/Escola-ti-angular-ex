@@ -13,30 +13,28 @@
 </head>
 <body>
 
+<nav>
+    <div class="nav-wrapper teal darken-1">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li>
+                <a href="#!produtos">
+                    Produtos
+                </a>
+            </li>
+            <li>
+                <a href="#!pedidos">
+                    Pedidos
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
 <div class="container">
 
-    <div class="row">
-
-        <div class="col s12">
-            <ul class="tabs">
-
-                <li class="tab col s3">
-                    <a href="#!produtos" ng-class="{active: tabCtrl.isSelected(1)}" ng-click="tabCtrl.setTab(1)">
-                        Produtos
-                    </a>
-                </li>
-                <li class="tab col s3">
-                    <a href="#!pedidos" ng-class="{active: tabCtrl.isSelected(2)}" ng-click="tabCtrl.setTab(2)">
-                        Pedidos
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-    </div>
-
     <div ng-view></div>
+
 </div>
 
 <script src="lib/angular.min.js"></script>

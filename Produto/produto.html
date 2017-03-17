@@ -1,12 +1,12 @@
 <div class="row">
-    <form class="col s12" name="form-produto" ng-submit="ProdutosCtrl.save(ProdutosCtrl.novoProduto)">
+    <form class="col s12" name="form-produto" ng-submit="ProdutosCtrl.save(ProdutosCtrl.produtoEditavel)">
         <div class="row">
             <div class="input-field col s3">
                 <input id="codigo" placeholder="Código" name="codigo" type="number"
-                       ng-model="ProdutosCtrl.novoProduto.codigo" class="validate" required>
+                       ng-model="ProdutosCtrl.produtoEditavel.codigo" class="validate" required>
             </div>
             <div class="input-field col s9">
-                <input id="nome" placeholder="Nome" name="nome" type="text" ng-model="ProdutosCtrl.novoProduto.nome"
+                <input id="nome" placeholder="Nome" name="nome" type="text" ng-model="ProdutosCtrl.produtoEditavel.nome"
                        class="validate" required>
             </div>
         </div>
@@ -14,39 +14,40 @@
         <div class="row">
             <div class="input-field col s6">
                 <input type="number" placeholder="Preço" name="preco" id="preco"
-                       ng-model="ProdutosCtrl.novoProduto.preco" class="validate" required>
+                       ng-model="ProdutosCtrl.produtoEditavel.preco" class="validate" required>
             </div>
             <div class="input-field col s6">
                 <input placeholder="Estoque" type="number" name="estoque" id="estoque"
-                       ng-model="ProdutosCtrl.novoProduto.estoque" class="validate" required>
+                       ng-model="ProdutosCtrl.produtoEditavel.estoque" class="validate" required>
             </div>
         </div>
 
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+            <button class="btn waves-effect waves-light pull right teal darken-1" type="submit" name="action">Salvar
             </button>
         </div>
     </form>
 </div>
 
-<div class="row">
+<!--<div class="row" ng-show="form-produto.$valid">
     <h3>{{ProdutosCtrl.produtoEditavel.codigo}} - {{ProdutosCtrl.produtoEditavel.nome}}</h3>
     Estoque: {{ProdutosCtrl.produtoEditavel.estoque}}
     <em class="pull right">{{ProdutosCtrl.produtoEditavel.preco | currency}}</em>
-</div>
+</div>-->
 
-<div class="row" ng-repeat="produto in ProdutosCtrl.products | orderBy:'-codigo'">
 
-    <h3>{{produto.codigo}} - {{produto.nome}}</h3>
-    Estoque: {{produto.estoque}}
-
-    <em class="pull right">{{produto.preco | currency}}</em>
-    <br>
-    <a href="" ng-click="ProdutosCtrl.edit(produto)">
-        Editar
-    </a>
-    |
-    <a href="" ng-click="ProdutosCtrl.delete(produto)">
-        Excluir
-    </a>
+<div class="row">
+    <div class="col s6 m4" ng-repeat="produto in ProdutosCtrl.products | orderBy:'-codigo'">
+        <div class="card">
+            <div class="card-content">
+                Código: {{produto.codigo}}
+                <span class="card-title">{{produto.nome}}</span>
+                <p>{{produto.preco | currency}} <span class="pull right">Estoque {{produto.estoque}}</span></p>
+            </div>
+            <div class="card-action">
+                <a href="#" ng-click="ProdutosCtrl.edit(produto)" class="teal-text">Edit</a>
+                <a href="#" ng-click="ProdutosCtrl.delete(produto)" class="teal-text">Delete</a>
+            </div>
+        </div>
+    </div>
 </div>
