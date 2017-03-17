@@ -1,7 +1,52 @@
-<form action="">
+<div class="row">
+    <form class="col s12" name="form-produto" ng-submit="ProdutosCtrl.save(ProdutosCtrl.novoProduto)">
+        <div class="row">
+            <div class="input-field col s3">
+                <input id="codigo" placeholder="Código" name="codigo" type="number"
+                       ng-model="ProdutosCtrl.novoProduto.codigo" class="validate" required>
+            </div>
+            <div class="input-field col s9">
+                <input id="nome" placeholder="Nome" name="nome" type="text" ng-model="ProdutosCtrl.novoProduto.nome"
+                       class="validate" required>
+            </div>
+        </div>
 
-</form>
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="number" placeholder="Preço" name="preco" id="preco"
+                       ng-model="ProdutosCtrl.novoProduto.preco" class="validate" required>
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="Estoque" type="number" name="estoque" id="estoque"
+                       ng-model="ProdutosCtrl.novoProduto.estoque" class="validate" required>
+            </div>
+        </div>
 
-<list-products>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+            </button>
+        </div>
+    </form>
+</div>
 
-</list-products>
+<div class="row">
+    <h3>{{ProdutosCtrl.produtoEditavel.codigo}} - {{ProdutosCtrl.produtoEditavel.nome}}</h3>
+    Estoque: {{ProdutosCtrl.produtoEditavel.estoque}}
+    <em class="pull right">{{ProdutosCtrl.produtoEditavel.preco | currency}}</em>
+</div>
+
+<div class="row" ng-repeat="produto in ProdutosCtrl.products | orderBy:'-codigo'">
+
+    <h3>{{produto.codigo}} - {{produto.nome}}</h3>
+    Estoque: {{produto.estoque}}
+
+    <em class="pull right">{{produto.preco | currency}}</em>
+    <br>
+    <a href="" ng-click="ProdutosCtrl.edit(produto)">
+        Editar
+    </a>
+    |
+    <a href="" ng-click="ProdutosCtrl.delete(produto)">
+        Excluir
+    </a>
+</div>
