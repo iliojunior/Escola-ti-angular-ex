@@ -5,7 +5,7 @@
     var app = angular
         .module('app');
 
-    app.controller('ProdutosController', ['$scope', ProdutosController]);
+    app.controller('ProdutosController', ['$scope', '$mdDialog', ProdutosController]);
 
     var produtosTeste = [
         {
@@ -23,12 +23,16 @@
     ];
 
     var produtos = produtosTeste;
+    const TITLE_DEFAULT = 'Novo Produto';
 
-    function ProdutosController($scope) {
-        $scope.products = produtos;
-        $scope.produtoEditavel = {};
+    function ProdutosController($scope, $mdDialog) {
 
-        $scope.titleProduto = "Novo Produto";
+        $scope.init = function () {
+            $scope.products = produtos;
+            $scope.produtoEditavel = {};
+
+            $scope.titleProduto = TITLE_DEFAULT;
+        };
 
         $scope.save = function () {
             var exists = false;
@@ -41,22 +45,55 @@
             if (!exists)
                 $scope.products.push($scope.produtoEditavel);
 
-            $scope.produtoEditavel = {};
+            $scope.init();
         };
 
         $scope.edit = function (produto) {
-            console.debug(produto);
-
+            $scope.titleProduto = produto.nome;
             $scope.produtoEditavel = produto;
-            console.debug($scope.produtoEditavel);
         };
 
-        $scope.delete = function (produto) {
+        var apagarProduto = function (produto) {
             produtos = produtos.filter(function (element) {
                 return (element !== produto);
             });
             $scope.products = produtos;
+
+            var alert = $mdDialog.alert()
+                .clickOutsideToClose(true)
+                .title('Sucesso')
+                .textContent('Produto foi apagado com sucesso!')
+                .ariaLabel('Apagado')
+                .ok('OK')
+                .targetEvent($scope.$event);
+
+            $mdDialog.show(alert);
+
         };
+
+        $scope.confirmDelete = function (produto) {
+            var confirm = $mdDialog.confirm()
+                .title('Deseja realmente apagar \'' + produto.nome + '\' ?')
+                .textContent('Esta operação não poderá ser revertida.')
+                .ariaLabel('Apagar')
+                .targetEvent($scope.$event)
+                .ok('SIM')
+                .cancel('NÃO');
+
+            $mdDialog.show(confirm).then(function () {
+                apagarProduto(produto);
+            }, function () {
+
+            });
+        };
+
+        $scope.delete = function (produto) {
+
+            $scope.confirmDelete(produto);
+
+        };
+
+        $scope.init();
     }
 
 })();
