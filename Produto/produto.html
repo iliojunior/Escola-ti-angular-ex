@@ -1,6 +1,6 @@
 <div class="row">
     <form class="col s12" name="formulario_produto" ng-submit="save(produtoEditavel)">
-        <div class="card">
+        <div class="card hoverable">
             <div class="card-content">
                 <span class="card-title">{{titleProduto}}</span>
                 <div class="row">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="row">
                     <button class="btn waves-effect waves-light pull right teal darken-1" type="submit" name="action">
-                        Adicionar
+                        Salvar
                     </button>
                 </div>
             </div>
@@ -41,15 +41,15 @@
 
 <div class="row">
     <div class="col s6 m4" ng-repeat="produto in products | orderBy:'-codigo'">
-        <div class="card">
+        <div class="card hoverable">
             <div class="card-content">
                 Código: {{produto.codigo}}
                 <span class="card-title">{{produto.nome}}</span>
                 <p>{{produto.preco | currency}} <span class="pull right">{{produto.estoque}} em estoque</span></p>
             </div>
             <div class="card-action">
-                <a href="#" ng-click="edit(produto)" class="teal-text">Edit</a>
-                <a href="#" ng-click="delete(produto)" class="teal-text">Delete</a>
+                <a href="" ng-click="edit(produto)" class="teal-text">Edit</a>
+                <a href="" ng-click="delete(produto)" class="teal-text">Delete</a>
             </div>
         </div>
     </div>

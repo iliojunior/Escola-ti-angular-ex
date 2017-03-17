@@ -31,17 +31,24 @@
         $scope.titleProduto = "Novo Produto";
 
         $scope.save = function () {
-            $scope.products.push(this.produtoEditavel);
+            var exists = false;
+
+            produtos.forEach(function (item) {
+                if (item === $scope.produtoEditavel)
+                    exists = true;
+            });
+
+            if (!exists)
+                $scope.products.push($scope.produtoEditavel);
+
             $scope.produtoEditavel = {};
         };
 
         $scope.edit = function (produto) {
-            produtos.forEach(function (item) {
-                if (item === produto)
-                    $scope.produtoEditavel = item;
-            });
-
             console.debug(produto);
+
+            $scope.produtoEditavel = produto;
+            console.debug($scope.produtoEditavel);
         };
 
         $scope.delete = function (produto) {
