@@ -4,14 +4,47 @@
     <meta charset="UTF-8">
     <title>Carrinho de Compras | Angular JS</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link rel="stylesheet" href="lib/materialize/css/materialize.min.css">
 
-    <script src="lib/materialize/js/materialize.min.js"></script>
     <script src="lib/angular.min.js"></script>
     <script src="application/app.js"></script>
-
 </head>
 <body>
 
+<div class="container">
+
+    <div class="row" ng-controller="TabController as tabCtrl">
+
+        <div class="col s12">
+            <ul class="tabs">
+
+                <li class="tab col s3">
+                    <a href="#tab_produtos" ng-click="tabCtrl.setTab(1)">
+                        Produtos
+                    </a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#tab_pedidos" ng-click="tabCtrl.setTab(2)">
+                        Pedidos
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div id="tab_produtos" class="col s12" ng-show="tabCtrl.isSelected(1)">
+
+            <product-tab></product-tab>
+
+        </div>
+        <div id="tab_pedidos" class="col s12" ng-show="tabCtrl.isSelected(2)">
+            Pedidos Tab
+        </div>
+    </div>
+</div>
+
 </body>
+
 </html>
