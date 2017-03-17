@@ -16,7 +16,8 @@
             })
             .when('/pedidos', {
                 controller: 'PedidosController',
-                templateUrl: 'Pedido/pedido.html'
+                templateUrl: 'Pedido/pedido.html',
+                controllerAs: 'PedidosCtrl'
             })
             .otherwise({redirectTo: '/produtos'});
 

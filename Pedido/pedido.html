@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pedidos</title>
-</head>
-<body>
+<div class="row">
+    <form class="col s12" name="formulario_pedido" ng-submit="save(Pedido)">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">
+                    {{titleRequest}}
+                </span>
+                <div class="row">
+                    <div class="input-field col s3 l2">
+                        <input id="codigo" placeholder="Código" name="codigo" type="number"
+                               ng-class="{'valid': formulario_pedido.codigo.$valid, 'invalid': formulario_pedido.codigo.$invalid}"
+                               ng-model="novoPedido.codigo" class="validate" required>
+                    </div>
+                    <div class="input-field col s9 l6">
+                        <input id="emissao" placeholder="Emissão" name="emissao" type="text"
+                               ng-model="novoPedido.emissao"
+                               ng-class="{valid: formulario_pedido.emissao.$valid, invalid: formulario_pedido.emissao.$invalid}"
+                               class="validate"
+                               required>
+                    </div>
+                    <div class="input-field col s6 l4">
+                        <input type="number" placeholder="Total" name="total" id="total" step="any"
+                               ng-model="novoPedido.total"
+                               ng-class="{valid: formulario_pedido.total.$valid, invalid: formulario_total.total.$invalid}"
+                               class="validate" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light pull right teal darken-1" type="submit" name="action">
+                        Pedir
+                    </button>
+                </div>
 
-</body>
-</html>
+                <div class="row">
+                    <div class="col s6 m4" ng-repeat="pedido in requests | orderBy:'-codigo'">
+                        <div class="card hoverable">
+                            <div class="card-content">
+                                Código: {{pedido.codigo}}
+                                <span class="card-title">{{pedido.emissao}}</span>
+                                <p>{{pedido.total | currency}}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="" ng-click="details(pedido)" class="teal-text">details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
