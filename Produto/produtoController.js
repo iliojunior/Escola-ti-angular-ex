@@ -5,7 +5,7 @@
     var app = angular
         .module('app');
 
-    app.controller('ProdutosController', ProdutosController);
+    app.controller('ProdutosController', ['$scope', ProdutosController]);
 
     var produtosTeste = [
         {
@@ -24,26 +24,31 @@
 
     var produtos = produtosTeste;
 
-    function ProdutosController() {
-        this.products = produtos;
-        this.produtoEditavel = {};
+    function ProdutosController($scope) {
+        $scope.products = produtos;
+        $scope.produtoEditavel = {};
 
-        this.titleProduto = "Novo Produto";
+        $scope.titleProduto = "Novo Produto";
 
-        this.save = function () {
-            this.products.push(this.produtoEditavel);
-            this.produtoEditavel = {};
+        $scope.save = function () {
+            $scope.products.push(this.produtoEditavel);
+            $scope.produtoEditavel = {};
         };
 
-        this.edit = function (produto) {
-            this.produtoEditavel = produto;
+        $scope.edit = function (produto) {
+            produtos.forEach(function (item) {
+                if (item === produto)
+                    $scope.produtoEditavel = item;
+            });
+
+            console.debug(produto);
         };
 
-        this.delete = function (produto) {
+        $scope.delete = function (produto) {
             produtos = produtos.filter(function (element) {
                 return (element !== produto);
             });
-            this.products = produtos;
+            $scope.products = produtos;
         };
     }
 
