@@ -21,9 +21,6 @@
 
     var pedidos = pedidosTeste;
     function PedidosController($scope){
-        $scope.requests = pedidos;
-        $scope.novoPedido = {};
-        $scope.titleRequest = "Novo Pedido";
 
         $scope.save = function(){
             $scope.requests.push($scope.novoPedido);
@@ -34,6 +31,15 @@
         $scope.details = function(){
 
         };
+
+        $scope.init = function () {
+            alert("asdasd");
+            $scope.requests = pedidos;
+            $scope.novoPedido = {};
+            $scope.titleRequest = "Novo Pedido";
+        };
+
+        $scope.init();
     }
 
 
