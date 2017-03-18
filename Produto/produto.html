@@ -39,8 +39,19 @@
     </form>
 </div>
 
+<nav class="row teal-text" style="margin-left: 0" id="nav-search">
+    <div class="nav-wrapper">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" placeholder="Pesquisar" ng-model="search">
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+</nav>
+
 <div class="row">
-    <div class="col s6 m4" ng-repeat="produto in products | orderBy:'-codigo'">
+    <div class="col s12 m6 l4" ng-repeat="produto in products | orderBy:'-codigo' | filter:{nome:search}">
         <div class="card hoverable">
             <div class="card-content">
                 Código: {{produto.codigo}}

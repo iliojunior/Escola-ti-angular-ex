@@ -6,3 +6,7 @@
 .md-button.md-default-theme.md-primary, .md-button.md-primary {
     color: #009688 !important
 }
+
+#nav-search{
+    background: #FFF;
+}
