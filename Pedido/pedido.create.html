@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="Produto/produto.css">
+
+<div class="row">
+    <form class="col l12">
+        <div class="card hoverable">
+            <div class="card-content">
+                <span class="card-title">Novo Pedido</span>
+
+                <div class="row">
+                    <div class="input-field col l3">
+                        <input type="number" placeholder="Código" name="codigo" id="codigo"
+                               ng-model="novoPedido.codigo"/>
+                    </div>
+                    <div class="input-field col l4">
+                        <input type="text" placeholder="Emissão" name="emissao" id="emissao"
+                               ng-model="novoPedido.emissao"/>
+                    </div>
+                    <div class="input-field col l3">
+                        <input type="number" step="any" placeholder="Total" name="total" id="total"
+                               ng-model="novoPedido.total"/>
+                    </div>
+                    <div class="input-field col l2">
+                        <button class="btn waves-effect waves-light pull right teal darken-1" type="submit"
+                                name="action">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<nav class="row teal-text" style="margin-left: 0" id="nav-search">
+    <div class="nav-wrapper">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" placeholder="Pesquisar" ng-model="search">
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+    <div class="resultado-pesquisa">
+        asdasdas
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col l12">
+        <div class="card hoverable">
+            <div class="card-content">
+            </div>
+        </div>
+    </div>
+</div>

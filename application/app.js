@@ -5,6 +5,14 @@
     var app = angular
         .module('app');
 
+    app.controller('MainController', ['$scope', MainController]);
+
+    function MainController($scope) {
+        $scope.pedidoMenu = function ($mdMenu, ev) {
+            $mdMenu.open(ev);
+        }
+    }
+
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
 
@@ -19,10 +27,14 @@
                 templateUrl: 'Pedido/pedido.html',
                 controllerAs: 'PedidosCtrl'
             })
+            .when('/pedido-create', {
+                controller: 'PedidoCreateController',
+                templateUrl: 'Pedido/pedido.create.html',
+                controllerAs: 'PedidoCreateCtrl'
+            })
             .otherwise({redirectTo: '/produtos'});
 
     }
-
 
     app.config(config);
 
